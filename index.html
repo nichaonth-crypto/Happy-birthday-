@@ -2,96 +2,1009 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Our Magical Universe ✨</title>
-<style>
-*{box-sizing:border-box}
-body{
- margin:0;min-height:100vh;text-align:center;color:#fff3d5;
- font-family:sans-serif;overflow-x:hidden;
- background:radial-gradient(ellipse at top,#44306c,#15182f 65%,#080b19);
-}
-#sky{position:fixed;inset:0;pointer-events:none;overflow:hidden}
-.star{position:absolute;color:#ffe8a0;animation:twinkle 2s infinite alternate}
-@keyframes twinkle{to{opacity:.2;transform:scale(.6)}}
-main{position:relative;padding:60px 18px}
-.moon{font-size:65px;animation:float 3s infinite ease-in-out}
-@keyframes float{50%{transform:translateY(-12px)}}
-h1{color:#ffe6a0}
-.card{
- max-width:460px;margin:25px auto;padding:25px;
- border:1px solid #b5a0ef;border-radius:22px;
- background:#ffffff10;box-shadow:0 0 30px #a78bfa20;
-}
-button{
- background:#ffe6a0;color:#282047;border:0;border-radius:30px;
- padding:14px 22px;margin:10px;font-size:16px;cursor:pointer;
-}
-.hidden{display:none}
-p{line-height:1.9}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff0f8">
+  <meta name="description" content="A little magical birthday surprise made with love">
+  <title>Happy Birthday ♡</title>
+
+  <style>
+    :root {
+      --pink: #ff9ecb;
+      --pink-light: #fff0f7;
+      --pink-deep: #e975ac;
+      --purple: #b9a2f8;
+      --purple-deep: #8970d4;
+      --text: #785575;
+      --white: #fffafd;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: var(--text);
+      font-family: "Trebuchet MS", "Noto Sans Thai", system-ui, sans-serif;
+      background:
+        radial-gradient(ellipse at 10% 10%, #ffe0f0 0%, transparent 40%),
+        radial-gradient(ellipse at 90% 30%, #e9dfff 0%, transparent 42%),
+        linear-gradient(160deg, #fff9fc, #fff0f7 50%, #f4efff);
+    }
+
+    button {
+      font: inherit;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button:focus-visible {
+      outline: 3px solid #a98be8;
+      outline-offset: 4px;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: min(100% - 28px, 760px);
+      margin: 0 auto;
+      padding: 24px 0 44px;
+      text-align: center;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+    }
+
+    .music-btn {
+      border: 1px solid #ffffffc9;
+      border-radius: 999px;
+      padding: 10px 15px;
+      background: #ffffffb8;
+      color: var(--purple-deep);
+      box-shadow: 0 5px 20px #c9a5d51c;
+      cursor: pointer;
+      font-size: 0.88rem;
+    }
+
+    .eyebrow {
+      margin: 8px 0;
+      color: var(--pink-deep);
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 8px 0;
+      font-size: clamp(2.2rem, 9vw, 4.5rem);
+      line-height: 1.15;
+      letter-spacing: -1px;
+      color: #e985b7;
+      text-shadow: 0 4px 0 #ffffffa8, 0 9px 28px #edafd1;
+    }
+
+    h1 span {
+      color: #a58be8;
+    }
+
+    .subtitle {
+      max-width: 470px;
+      margin: 16px auto 26px;
+      font-size: clamp(0.95rem, 3.5vw, 1.1rem);
+      line-height: 1.9;
+      color: #997b9a;
+    }
+
+    .scene {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 300px;
+      margin: 0 auto 22px;
+      overflow: hidden;
+      border: 1px solid #ffffffc9;
+      border-radius: 30px;
+      background: linear-gradient(145deg, #fff9fdc9, #f1e9ffc9);
+      box-shadow: 0 20px 60px #bca0d52b;
+    }
+
+    .scene::before,
+    .scene::after {
+      position: absolute;
+      content: "✦";
+      color: #f3bfdf;
+      font-size: 25px;
+      animation: twinkle 2.5s ease-in-out infinite alternate;
+    }
+
+    .scene::before {
+      top: 25px;
+      left: 13%;
+    }
+
+    .scene::after {
+      right: 12%;
+      bottom: 28px;
+      color: #bba7f2;
+      animation-delay: 1s;
+    }
+
+    .gift-area {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 12px;
+    }
+
+    .gift-btn {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 180px;
+      height: 180px;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      filter: drop-shadow(0 13px 12px #cb91bf3b);
+      animation: giftBounce 2.2s ease-in-out infinite;
+    }
+
+    .gift-btn:active {
+      transform: scale(0.96);
+    }
+
+    .gift-box {
+      position: absolute;
+      bottom: 14px;
+      width: 130px;
+      height: 94px;
+      border: 3px solid #fff9ff;
+      border-radius: 9px 9px 16px 16px;
+      background: linear-gradient(135deg, #ffb4d7, #f38dbd);
+    }
+
+    .gift-box::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 47px;
+      width: 27px;
+      content: "";
+      background: linear-gradient(90deg, #c6b2ff, #e4d7ff, #c6b2ff);
+    }
+
+    .gift-box::after {
+      position: absolute;
+      right: 0;
+      bottom: -12px;
+      left: 0;
+      height: 13px;
+      border-radius: 0 0 8px 8px;
+      content: "";
+      background: #e985b7;
+    }
+
+    .gift-lid {
+      position: absolute;
+      z-index: 2;
+      top: 32px;
+      left: 16px;
+      width: 148px;
+      height: 32px;
+      border: 3px solid #fff9ff;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #ffcae4, #ff9fcb);
+      transform-origin: 15% 100%;
+      transition: transform 0.75s cubic-bezier(.2, .8, .2, 1);
+    }
+
+    .gift-lid::after {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 55px;
+      width: 27px;
+      content: "";
+      background: #c6b2ff;
+    }
+
+    .bow {
+      position: absolute;
+      top: -21px;
+      left: 52px;
+      width: 37px;
+      height: 25px;
+      border: 5px solid #b49aed;
+      border-radius: 80% 20% 70% 30%;
+      transform: rotate(15deg);
+    }
+
+    .bow::after {
+      position: absolute;
+      top: -4px;
+      left: 22px;
+      width: 34px;
+      height: 24px;
+      border: 5px solid #b49aed;
+      border-radius: 20% 80% 30% 70%;
+      content: "";
+      transform: rotate(40deg);
+    }
+
+    .gift-btn.opened {
+      animation: none;
+    }
+
+    .gift-btn.opened .gift-lid {
+      transform: translate(-22px, -65px) rotate(-30deg);
+    }
+
+    .gift-hint {
+      margin: 0;
+      font-size: 0.93rem;
+      color: #aa8aa9;
+      animation: twinkle 2s infinite alternate;
+    }
+
+    .gift-message {
+      position: absolute;
+      z-index: 3;
+      top: 20px;
+      left: 50%;
+      width: min(90%, 320px);
+      padding: 14px;
+      border: 1px solid #ffffffd9;
+      border-radius: 20px;
+      background: #fffaf5f2;
+      box-shadow: 0 10px 35px #dca8d84d;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 25px) scale(.7);
+      transition: opacity .5s, transform .5s;
+    }
+
+    .gift-message.show {
+      opacity: 1;
+      transform: translate(-50%, 0) scale(1);
+    }
+
+    .gift-message strong {
+      display: block;
+      color: #e47daf;
+      font-size: 1.5rem;
+    }
+
+    .gift-message p {
+      margin: 5px 0;
+      line-height: 1.6;
+    }
+
+    .section {
+      margin-top: 25px;
+      padding: 25px 20px;
+      border: 1px solid #ffffffc9;
+      border-radius: 26px;
+      background: #ffffffa3;
+      box-shadow: 0 12px 40px #c5a2d51b;
+      backdrop-filter: blur(8px);
+    }
+
+    .section h2 {
+      margin: 0 0 15px;
+      color: #b18cdd;
+      font-size: 1.4rem;
+    }
+
+    .letter {
+      position: relative;
+      padding: 24px 19px;
+      border: 1px dashed #efb1d1;
+      border-radius: 15px;
+      background: linear-gradient(145deg, #fffafc, #fff1f8);
+      text-align: left;
+    }
+
+    .letter::before {
+      position: absolute;
+      top: -15px;
+      right: 15px;
+      content: "💌";
+      font-size: 32px;
+      transform: rotate(12deg);
+    }
+
+    .letter p {
+      margin: 0 0 13px;
+      line-height: 1.95;
+      font-size: 0.97rem;
+      white-space: pre-line;
+    }
+
+    .letter .signature {
+      margin: 20px 0 0;
+      text-align: right;
+      color: #d47cab;
+      font-weight: 700;
+    }
+
+    .cake-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 0 8px;
+    }
+
+    .cake {
+      position: relative;
+      width: 190px;
+      height: 160px;
+      margin: 12px 0 6px;
+    }
+
+    .cake-base {
+      position: absolute;
+      bottom: 13px;
+      left: 10px;
+      width: 170px;
+      height: 73px;
+      border: 3px solid #fff;
+      border-radius: 14px 14px 20px 20px;
+      background: linear-gradient(#ffcae2 0 27%, #f5a8ce 27% 100%);
+      box-shadow: 0 9px 0 #e48bb9;
+    }
+
+    .cake-base::before {
+      position: absolute;
+      top: -8px;
+      left: -3px;
+      width: 170px;
+      height: 20px;
+      border: 3px solid #fff;
+      border-radius: 50%;
+      content: "";
+      background: #fff0f8;
+    }
+
+    .cake-base::after {
+      position: absolute;
+      top: 17px;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      content: "♡  ♡  ♡  ♡  ♡";
+      color: #fff7ff;
+      font-size: 13px;
+      text-align: center;
+      letter-spacing: 5px;
+    }
+
+    .cake-top {
+      position: absolute;
+      bottom: 83px;
+      left: 28px;
+      width: 134px;
+      height: 42px;
+      border: 3px solid #fff;
+      border-radius: 12px 12px 8px 8px;
+      background: linear-gradient(#e5d9ff 0 50%, #c9b3fa 50%);
+    }
+
+    .candle {
+      position: absolute;
+      z-index: 2;
+      bottom: 120px;
+      left: 91px;
+      width: 12px;
+      height: 33px;
+      border: 2px solid #fff;
+      border-radius: 5px;
+      background: repeating-linear-gradient(
+        -45deg, #fff, #fff 5px, #f5a0c9 5px, #f5a0c9 10px
+      );
+    }
+
+    .flame {
+      position: absolute;
+      bottom: 152px;
+      left: 91px;
+      width: 13px;
+      height: 20px;
+      border-radius: 50% 50% 50% 0;
+      background: radial-gradient(ellipse at 60% 65%, #fffbd3 0 15%, #ffcf72 38%, #ff9dbb 75%);
+      box-shadow: 0 0 12px #ffbd6b, 0 0 30px #ff9dcb;
+      transform: rotate(-45deg);
+      animation: flame 1s ease-in-out infinite alternate;
+      transform-origin: 50% 100%;
+    }
+
+    .cake-note {
+      margin: 0 0 16px;
+      color: #a18aac;
+      font-size: .9rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 7px;
+      min-height: 46px;
+      padding: 12px 20px;
+      border: 0;
+      border-radius: 999px;
+      color: white;
+      background: linear-gradient(110deg, #f29bc5, #b49aed);
+      box-shadow: 0 8px 20px #d9a5d94d;
+      cursor: pointer;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 11px 25px #d9a5d966;
+    }
+
+    .btn:active {
+      transform: scale(.97);
+    }
+
+    .btn-secondary {
+      color: #a17fca;
+      background: #f3eaff;
+      box-shadow: none;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 17px;
+    }
+
+    .secret-box {
+      display: none;
+      margin-top: 18px;
+      padding: 20px 16px;
+      border: 1px dashed #d3b5f1;
+      border-radius: 18px;
+      background: #f9f3ff;
+      animation: appear .55s ease both;
+    }
+
+    .secret-box.show {
+      display: block;
+    }
+
+    .secret-box p {
+      margin: 7px 0;
+      line-height: 1.9;
+    }
+
+    .footer {
+      margin-top: 30px;
+      color: #b29ab7;
+      font-size: .83rem;
+      line-height: 1.8;
+    }
+
+    #particles {
+      position: fixed;
+      z-index: 0;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      bottom: -50px;
+      left: var(--x);
+      font-size: var(--size);
+      opacity: 0;
+      animation: floatUp var(--duration) linear forwards;
+      filter: drop-shadow(0 3px 5px #d9a5d944);
+      will-change: transform, opacity;
+    }
+
+    .burst {
+      position: fixed;
+      z-index: 20;
+      left: var(--x);
+      top: var(--y);
+      pointer-events: none;
+      font-size: 22px;
+      animation: burst 1.2s ease-out forwards;
+    }
+
+    .toast {
+      position: fixed;
+      z-index: 30;
+      right: 16px;
+      bottom: 18px;
+      left: 16px;
+      width: fit-content;
+      max-width: calc(100% - 32px);
+      margin: auto;
+      padding: 12px 18px;
+      border: 1px solid #fff;
+      border-radius: 999px;
+      background: #fffaf5f2;
+      color: #a27ca9;
+      box-shadow: 0 8px 30px #b69bcf30;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: .3s;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes giftBounce {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-9px) rotate(1deg); }
+    }
+
+    @keyframes floatUp {
+      0% {
+        opacity: 0;
+        transform: translate3d(0, 0, 0) rotate(0);
+      }
+      10% { opacity: .85; }
+      85% { opacity: .75; }
+      100% {
+        opacity: 0;
+        transform: translate3d(var(--drift), -115vh, 0) rotate(360deg);
+      }
+    }
+
+    @keyframes twinkle {
+      from { opacity: .45; }
+      to { opacity: 1; }
+    }
+
+    @keyframes flame {
+      from { transform: rotate(-48deg) scale(.94); }
+      to { transform: rotate(-40deg) scale(1.08); }
+    }
+
+    @keyframes burst {
+      0% { opacity: 1; transform: translate(0, 0) scale(.6) rotate(0); }
+      100% {
+        opacity: 0;
+        transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(80deg);
+      }
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        width: min(100% - 22px, 760px);
+        padding-top: 15px;
+      }
+
+      .scene {
+        min-height: 285px;
+        border-radius: 24px;
+      }
+
+      .section {
+        padding: 21px 15px;
+        border-radius: 22px;
+      }
+
+      .letter {
+        padding: 22px 15px;
+      }
+
+      .letter p {
+        font-size: .94rem;
+      }
+
+      .gift-message strong {
+        font-size: 1.3rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<div id="sky"></div>
-<main>
- <div class="moon">🌙</div>
- <p>✦ WELCOME TO MY LITTLE UNIVERSE ✦</p>
- <h1>ถึงคนสำคัญของเรา 💖</h1>
- <p>คืนนี้มีดวงดาวดวงหนึ่ง<br>อยากมอบของขวัญให้คุณ</p>
- <button onclick="showGift()">✨ เปิดประตูเวทมนตร์</button>
+  <div id="particles" aria-hidden="true"></div>
 
- <section id="gift" class="card hidden">
-  <div style="font-size:70px">🎁</div>
-  <h2>สุขสันต์วันเกิด! 🎂</h2>
-  <p>ขอให้ทุกวันของคุณเต็มไปด้วยความสุข<br>
-  และมีรอยยิ้มอยู่เสมอ</p>
-  <button onclick="showLetter()">💌 เปิดจดหมายลับ</button>
- </section>
+  <main class="page">
+    <div class="topbar">
+      <button
+        class="music-btn"
+        id="musicBtn"
+        type="button"
+        aria-pressed="false"
+        aria-label="เปิดหรือปิดเพลงพื้นหลัง"
+      >🎵 เปิดเพลง</button>
+    </div>
 
- <section id="letter" class="card hidden">
-  <h2>จดหมายจากน้ำอิง 💗</h2>
-  <p>ขอบคุณที่เป็นคนสำคัญของครอบครัวนะ<br>
-  ขอให้ปีนี้มีแต่เรื่องดี ๆ เข้ามา<br>
-  และขอให้รู้ไว้เสมอว่าคุณเป็นที่รัก ✨</p>
-  <p>ด้วยรัก จากน้ำอิง 🌷</p>
-  <button onclick="wish()">🌠 ส่งคำอธิษฐาน</button>
-  <p id="wish"></p>
- </section>
- <footer>Made with love, just for you ✨</footer>
-</main>
-<script>
-const sky=document.getElementById("sky");
-for(let i=0;i<75;i++){
- const s=document.createElement("span");
- s.className="star";
- s.textContent=Math.random()>.5?"✦":"·";
- s.style.left=Math.random()*100+"%";
- s.style.top=Math.random()*100+"%";
- s.style.fontSize=(8+Math.random()*16)+"px";
- s.style.animationDelay=Math.random()*3+"s";
- sky.appendChild(s);
-}
-function showGift(){
- document.getElementById("gift").classList.remove("hidden");
- document.getElementById("gift").scrollIntoView({behavior:"smooth",block:"center"});
-}
-function showLetter(){
- document.getElementById("letter").classList.remove("hidden");
- document.getElementById("letter").scrollIntoView({behavior:"smooth",block:"center"});
-}
-function wish(){
- document.getElementById("wish").textContent="ขอให้ความสุขส่องประกายเหมือนดวงดาว! ⭐💖";
- for(let i=0;i<30;i++){
-  const s=document.createElement("span");
-  s.textContent=["✨","💖","⭐","🌙"][Math.floor(Math.random()*4)];
-  s.style.cssText="position:fixed;top:-30px;left:"+Math.random()*100+"vw;font-size:24px;pointer-events:none";
-  document.body.appendChild(s);
-  const d=1800+Math.random()*1500;
-  s.animate([{transform:"translateY(0)",opacity:1},{transform:"translateY(110vh) rotate(400deg)",opacity:0}],{duration:d});
-  setTimeout(()=>s.remove(),d);
- }
-}
-</script>
+    <header>
+      <p class="eyebrow">a little surprise for you ♡</p>
+      <h1>Happy <span>Birthday!</span></h1>
+      <p class="subtitle">
+        วันนี้เป็นวันพิเศษของคนพิเศษ ✨<br>
+        มีของขวัญชิ้นเล็ก ๆ ที่ตั้งใจทำมาให้ด้วยนะ
+      </p>
+    </header>
+
+    <section class="scene" aria-label="กล่องของขวัญวันเกิด">
+      <div class="gift-area">
+        <button
+          class="gift-btn"
+          id="giftBtn"
+          type="button"
+          aria-label="เปิดกล่องของขวัญ"
+          aria-expanded="false"
+        >
+          <span class="gift-lid"><span class="bow"></span></span>
+          <span class="gift-box"></span>
+        </button>
+        <p class="gift-hint" id="giftHint">แตะกล่องของขวัญเพื่อเปิด ♡</p>
+      </div>
+
+      <div class="gift-message" id="giftMessage" aria-live="polite">
+        <strong>Surprise! 🎉</strong>
+        <p>ขอให้วันนี้เต็มไปด้วยรอยยิ้ม<br>และเรื่องราวดี ๆ นะคนเก่ง ♡</p>
+      </div>
+    </section>
+
+    <section class="section" id="letterSection">
+      <h2>💌 จดหมายถึงคนพิเศษ</h2>
+      <div class="letter">
+        <p>ถึง <strong>คนพิเศษของเรา</strong> ♡</p>
+        <p>สุขสันต์วันเกิดนะ! 🎂
+
+ขอให้ปีนี้เป็นปีที่ใจดีกับเธอมาก ๆ
+ขอให้ทุกวันที่ตื่นขึ้นมา มีเรื่องเล็ก ๆ
+ที่ทำให้เธอยิ้มได้เสมอ
+
+ขอให้ความฝันที่เธอตั้งใจไว้
+ค่อย ๆ กลายเป็นความจริงทีละอย่าง
+เหนื่อยเมื่อไหร่ก็อย่าลืมพัก
+และอย่าลืมว่าเธอเก่งกว่าที่ตัวเองคิดนะ
+
+ขอให้ได้พบเจอผู้คนที่อ่อนโยน
+มีความสุขกับสิ่งที่รัก
+และเป็นตัวเองในแบบที่ชอบได้เต็มที่เลย ♡</p>
+        <p class="signature">ด้วยความรักและความปรารถนาดี ✿</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>🎂 Make a wish!</h2>
+      <div class="cake-wrap">
+        <div class="cake" role="img" aria-label="เค้กวันเกิดสีชมพูม่วงพร้อมเทียนเรืองแสง">
+          <div class="cake-base"></div>
+          <div class="cake-top"></div>
+          <div class="candle"></div>
+          <div class="flame" id="flame"></div>
+        </div>
+
+        <p class="cake-note" id="cakeNote">
+          อธิษฐานขอพรในใจ แล้วเป่าเทียนกันนะ ✨
+        </p>
+
+        <button class="btn" id="blowBtn" type="button">
+          🌬️ เป่าเทียนวันเกิด
+        </button>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>🎀 ยังมีอะไรอีกนะ...</h2>
+      <p style="line-height:1.9; margin:0">
+        มีบางอย่างที่ซ่อนอยู่ตรงนี้<br>
+        ลองกดปุ่มข้างล่างดูสิ ♡
+      </p>
+
+      <div class="button-row">
+        <button class="btn" id="secretBtn" type="button" aria-expanded="false">
+          ✨ เปิดเซอร์ไพรส์ลับ
+        </button>
+        <button class="btn btn-secondary" id="heartBtn" type="button">
+          💗 ส่งหัวใจให้หน่อย
+        </button>
+      </div>
+
+      <div class="secret-box" id="secretBox" aria-live="polite">
+        <div style="font-size:2rem">🌷💗🌙</div>
+        <p><strong>ข้อความลับสำหรับเธอ</strong></p>
+        <p>
+          ไม่ว่าเส้นทางข้างหน้าจะเป็นแบบไหน<br>
+          ขอให้เธอมีความกล้าที่จะฝัน<br>
+          มีคนคอยรับฟังในวันที่เหนื่อย<br>
+          และมีความสุขกับชีวิตในแบบของตัวเองนะ
+        </p>
+        <p>โลกใบนี้โชคดีมากเลยที่มีเธออยู่ ♡</p>
+        <p>— จากคนที่ตั้งใจทำเว็บนี้ให้เธอ ✿</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      Made with ♡, a little magic & lots of love<br>
+      ขอให้ทุกวันของเธอเต็มไปด้วยความสุขนะ 🌸
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const $ = (id) => document.getElementById(id);
+
+      const particles = $("particles");
+      const giftBtn = $("giftBtn");
+      const giftMessage = $("giftMessage");
+      const giftHint = $("giftHint");
+      const musicBtn = $("musicBtn");
+      const flame = $("flame");
+      const cakeNote = $("cakeNote");
+      const blowBtn = $("blowBtn");
+      const secretBtn = $("secretBtn");
+      const secretBox = $("secretBox");
+      const heartBtn = $("heartBtn");
+      const toast = $("toast");
+
+      let giftOpened = false;
+      let candleBlown = false;
+      let secretOpened = false;
+      let audioContext = null;
+      let musicTimer = null;
+      let noteIndex = 0;
+      let musicOn = false;
+      let toastTimer = null;
+
+      // เมโลดีสั้น ๆ ที่สร้างจาก Web Audio API
+      // ไม่ต้องใช้ไฟล์ MP3 หรือโหลดเพลงจากภายนอก
+      const melody = [
+        523.25, 659.25, 783.99, 659.25,
+        587.33, 698.46, 880.00, 698.46,
+        523.25, 659.25, 783.99, 1046.50,
+        880.00, 783.99, 659.25, 587.33
+      ];
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("show");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toast.classList.remove("show");
+        }, 2400);
+      }
+
+      function makeSound(frequency, duration = 0.22, volume = 0.055) {
+        if (!audioContext || audioContext.state !== "running") return;
+
+        try {
+          const oscillator = audioContext.createOscillator();
+          const gain = audioContext.createGain();
+
+          oscillator.type = "sine";
+          oscillator.frequency.value = frequency;
+          gain.gain.setValueAtTime(volume, audioContext.currentTime);
+          gain.gain.exponentialRampToValueAtTime(
+            0.001,
+            audioContext.currentTime + duration
+          );
+
+          oscillator.connect(gain);
+          gain.connect(audioContext.destination);
+
+          oscillator.start();
+          oscillator.stop(audioContext.currentTime + duration);
+        } catch (error) {
+          console.warn("เล่นเสียงไม่ได้:", error);
+        }
+      }
+
+      function startMusic() {
+        if (musicOn) return;
+
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+
+        if (!AudioCtx) {
+          showToast("เบราว์เซอร์นี้ไม่รองรับเสียงเพลง 🎵");
+          return;
+        }
+
+        try {
+          if (!audioContext) audioContext = new AudioCtx();
+
+          audioContext.resume().then(() => {
+            if (musicOn) return;
+
+            musicOn = true;
+            musicBtn.textContent = "🔇 ปิดเพลง";
+            musicBtn.setAttribute("aria-pressed", "true");
+
+            const playNote = () => {
+              if (!musicOn) return;
+              makeSound(melody[noteIndex], 0.32, 0.035);
+              noteIndex = (noteIndex + 1) % melody.length;
+            };
+
+            playNote();
+            musicTimer = setInterval(playNote, 380);
+          }).catch(() => {
+            showToast("ลองแตะเปิดเพลงอีกครั้งนะ 🎵");
+          });
+        } catch (error) {
+          showToast("ไม่สามารถเปิดเพลงได้ในขณะนี้");
+        }
+      }
+
+      function stopMusic() {
+        musicOn = false;
+        clearInterval(musicTimer);
+        musicTimer = null;
+        musicBtn.textContent = "🎵 เปิดเพลง";
+        musicBtn.setAttribute("aria-pressed", "false");
+      }
+
+      musicBtn.addEventListener("click", () => {
+        if (musicOn) {
+          stopMusic();
+        } else {
+          startMusic();
+        }
+      });
+
+      const symbols = ["♡", "♥", "✦", "✨", "🌸", "🌷", "💗", "⭐"];
+
+      function spawnParticle() {
+        if (document.hidden || particles.childElementCount > 32) return;
+
+        const item = document.createElement("span");
+        item.className = "particle";
+        item.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+
+        item.style.setProperty("--x", Math.random() * 100 + "%");
+        item.style.setProperty("--size", (12 + Math.random() * 17) + "px");
+        item.style.setProperty("--duration", (7 + Math.random() * 7) + "s");
+        item.style.setProperty("--drift", (Math.random() * 130 - 65) + "px");
+
+        particles.appendChild(item);
+        item.addEventListener("animationend", () => item.remove(), { once: true });
+      }
+
+      // ป้องกันเอฟเฟกต์สะสมจนทำให้มือถือทำงานหนัก
+      const particleTimer = setInterval(spawnParticle, 550);
+
+      function burstAt(x, y, amount = 22) {
+        const icons = ["💗", "♡", "✨", "🌸", "⭐", "💜"];
+
+        for (let i = 0; i < amount; i++) {
+          const item = document.createElement("span");
+          item.className = "burst";
+          item.textContent = icons[Math.floor(Math.random() * icons.length)];
+          item.style.setProperty("--x", x + "px");
+          item.style.setProperty("--y", y + "px");
+          item.style.setProperty("--dx", (Math.random() * 280 - 140) + "px");
+          item.style.setProperty("--dy", (Math.random() * 250 - 170) + "px");
+
+          document.body.appendChild(item);
+          item.addEventListener("animationend", () => item.remove(), { once: true });
+        }
+      }
+
+      function burstFrom(element, amount) {
+        const rect = element.getBoundingClientRect();
+        burstAt(rect.left + rect.width / 2, rect.top + rect.height / 2, amount);
+      }
+
+      giftBtn.addEventListener("click", () => {
+        if (giftOpened) {
+          burstFrom(giftBtn, 8);
+          showToast("ของขวัญชิ้นนี้มีไว้ให้เธอคนเดียวนะ ♡");
+          return;
+        }
+
+        giftOpened = true;
+        giftBtn.classList.add("opened");
+        giftBtn.setAttribute("aria-expanded", "true");
+        giftMessage.classList.add("show");
+        giftHint.textContent = "เย้! เปิดของขวัญสำเร็จแล้ว ♡";
+
+        burstFrom(giftBtn, 30);
+        makeSound(783.99, 0.2);
+        setTimeout(() => makeSound(1046.5, 0.35), 140);
+      });
+
+      blowBtn.addEventListener("click", () => {
+        if (candleBlown) {
+          flame.style.display = "block";
+          flame.style.animation = "";
+          candleBlown = false;
+          blowBtn.textContent = "🌬️ เป่าเทียนวันเกิด";
+          cakeNote.textContent = "จุดเทียนใหม่แล้ว ขอพรได้อีกครั้งนะ ✨";
+          showToast("เทียนกลับมาสว่างแล้ว 🕯️");
+          makeSound(659.25, 0.2);
+          return;
+        }
+
+        candleBlown = true;
+        flame.style.display = "none";
+        blowBtn.textContent = "🕯️ จุดเทียนอีกครั้ง";
+        cakeNote.textContent = "พรที่ขอไว้ ขอให้ค่อย ๆ เป็นจริงนะ ♡";
+
+        burstFrom($("flame"), 14);
+        makeSound(392, 0.28, 0.025);
+        showToast("สุขสันต์วันเกิด ขอให้พรเป็นจริงนะ! 🎂");
+      });
+
+      secretBtn.addEventListener("click", () => {
+        secretOpened = !secretOpened;
+        secretBox.classList.toggle("show", secretOpened);
+        secretBtn.setAttribute("aria-expanded", String(secretOpened));
+        secretBtn.textContent = secretOpened
+          ? "💗 ซ่อนเซอร์ไพรส์"
+          : "✨ เปิดเซอร์ไพรส์ลับ";
+
+        if (secretOpened) {
+          burstFrom(secretBtn, 25);
+          showToast("ค้นพบข้อความลับแล้ว! 🌷");
+          if (navigator.vibrate) navigator.vibrate(35);
+        }
+      });
+
+      heartBtn.addEventListener("click", () => {
+        burstFrom(heartBtn, 30);
+        makeSound(659.25, 0.2);
+        showToast("ส่งหัวใจให้เต็มหน้าจอเลย 💗");
+      });
+
+      // เคารพการตั้งค่าลดการเคลื่อนไหวของอุปกรณ์
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        clearInterval(particleTimer);
+      }
+
+      // หยุดสร้างโน้ตเมื่อหน้าเว็บไม่อยู่ด้านหน้า
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden && musicOn) {
+          stopMusic();
+        }
+      });
+
+      // ลดโอกาสเกิดเสียงค้างเมื่อปิดหน้าเว็บ
+      window.addEventListener("pagehide", () => {
+        stopMusic();
+        if (audioContext && audioContext.state !== "closed") {
+          audioContext.close().catch(() => {});
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
