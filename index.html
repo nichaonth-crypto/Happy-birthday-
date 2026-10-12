@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Our Magical Universe ✨</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;min-height:100vh;text-align:center;color:#fff3d5;
+ font-family:sans-serif;overflow-x:hidden;
+ background:radial-gradient(ellipse at top,#44306c,#15182f 65%,#080b19);
+}
+#sky{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.star{position:absolute;color:#ffe8a0;animation:twinkle 2s infinite alternate}
+@keyframes twinkle{to{opacity:.2;transform:scale(.6)}}
+main{position:relative;padding:60px 18px}
+.moon{font-size:65px;animation:float 3s infinite ease-in-out}
+@keyframes float{50%{transform:translateY(-12px)}}
+h1{color:#ffe6a0}
+.card{
+ max-width:460px;margin:25px auto;padding:25px;
+ border:1px solid #b5a0ef;border-radius:22px;
+ background:#ffffff10;box-shadow:0 0 30px #a78bfa20;
+}
+button{
+ background:#ffe6a0;color:#282047;border:0;border-radius:30px;
+ padding:14px 22px;margin:10px;font-size:16px;cursor:pointer;
+}
+.hidden{display:none}
+p{line-height:1.9}
+</style>
+</head>
+<body>
+<div id="sky"></div>
+<main>
+ <div class="moon">🌙</div>
+ <p>✦ WELCOME TO MY LITTLE UNIVERSE ✦</p>
+ <h1>ถึงคนสำคัญของเรา 💖</h1>
+ <p>คืนนี้มีดวงดาวดวงหนึ่ง<br>อยากมอบของขวัญให้คุณ</p>
+ <button onclick="showGift()">✨ เปิดประตูเวทมนตร์</button>
+
+ <section id="gift" class="card hidden">
+  <div style="font-size:70px">🎁</div>
+  <h2>สุขสันต์วันเกิด! 🎂</h2>
+  <p>ขอให้ทุกวันของคุณเต็มไปด้วยความสุข<br>
+  และมีรอยยิ้มอยู่เสมอ</p>
+  <button onclick="showLetter()">💌 เปิดจดหมายลับ</button>
+ </section>
+
+ <section id="letter" class="card hidden">
+  <h2>จดหมายจากน้ำอิง 💗</h2>
+  <p>ขอบคุณที่เป็นคนสำคัญของครอบครัวนะ<br>
+  ขอให้ปีนี้มีแต่เรื่องดี ๆ เข้ามา<br>
+  และขอให้รู้ไว้เสมอว่าคุณเป็นที่รัก ✨</p>
+  <p>ด้วยรัก จากน้ำอิง 🌷</p>
+  <button onclick="wish()">🌠 ส่งคำอธิษฐาน</button>
+  <p id="wish"></p>
+ </section>
+ <footer>Made with love, just for you ✨</footer>
+</main>
+<script>
+const sky=document.getElementById("sky");
+for(let i=0;i<75;i++){
+ const s=document.createElement("span");
+ s.className="star";
+ s.textContent=Math.random()>.5?"✦":"·";
+ s.style.left=Math.random()*100+"%";
+ s.style.top=Math.random()*100+"%";
+ s.style.fontSize=(8+Math.random()*16)+"px";
+ s.style.animationDelay=Math.random()*3+"s";
+ sky.appendChild(s);
+}
+function showGift(){
+ document.getElementById("gift").classList.remove("hidden");
+ document.getElementById("gift").scrollIntoView({behavior:"smooth",block:"center"});
+}
+function showLetter(){
+ document.getElementById("letter").classList.remove("hidden");
+ document.getElementById("letter").scrollIntoView({behavior:"smooth",block:"center"});
+}
+function wish(){
+ document.getElementById("wish").textContent="ขอให้ความสุขส่องประกายเหมือนดวงดาว! ⭐💖";
+ for(let i=0;i<30;i++){
+  const s=document.createElement("span");
+  s.textContent=["✨","💖","⭐","🌙"][Math.floor(Math.random()*4)];
+  s.style.cssText="position:fixed;top:-30px;left:"+Math.random()*100+"vw;font-size:24px;pointer-events:none";
+  document.body.appendChild(s);
+  const d=1800+Math.random()*1500;
+  s.animate([{transform:"translateY(0)",opacity:1},{transform:"translateY(110vh) rotate(400deg)",opacity:0}],{duration:d});
+  setTimeout(()=>s.remove(),d);
+ }
+}
+</script>
+</body>
+</html>
