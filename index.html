@@ -5,754 +5,208 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#fff0f8">
-  <meta name="description" content="A little magical birthday surprise made with love">
-  <title>Happy Birthday ♡</title>
-
+  <meta name="description" content="A tiny pastel birthday surprise made with love">
+  <title>น้ารักหนูมั้ย ♡</title>
   <style>
     :root {
-      --pink: #ff9ecb;
-      --pink-light: #fff0f7;
-      --pink-deep: #e975ac;
-      --purple: #b9a2f8;
-      --purple-deep: #8970d4;
-      --text: #785575;
-      --white: #fffafd;
+      --pink: #f5a3cb;
+      --pink-deep: #d96da7;
+      --pink-pale: #fff0f7;
+      --purple: #b8a0ef;
+      --purple-deep: #8d72c9;
+      --ink: #805d83;
+      --glass: rgba(255,255,255,.78);
     }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      margin: 0;
-      min-height: 100vh;
-      overflow-x: hidden;
-      color: var(--text);
-      font-family: "Trebuchet MS", "Noto Sans Thai", system-ui, sans-serif;
+      margin: 0; min-height: 100vh; overflow-x: hidden;
+      font-family: "Noto Sans Thai", "Leelawadee UI", system-ui, sans-serif;
+      color: var(--ink);
       background:
-        radial-gradient(ellipse at 10% 10%, #ffe0f0 0%, transparent 40%),
-        radial-gradient(ellipse at 90% 30%, #e9dfff 0%, transparent 42%),
-        linear-gradient(160deg, #fff9fc, #fff0f7 50%, #f4efff);
-    }
-
-    button {
-      font: inherit;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    button:focus-visible {
-      outline: 3px solid #a98be8;
-      outline-offset: 4px;
-    }
-
-    .page {
-      position: relative;
-      z-index: 1;
-      width: min(100% - 28px, 760px);
-      margin: 0 auto;
-      padding: 24px 0 44px;
-      text-align: center;
-    }
-
-    .topbar {
-      display: flex;
-      justify-content: flex-end;
-      margin-bottom: 20px;
-    }
-
-    .music-btn {
-      border: 1px solid #ffffffc9;
-      border-radius: 999px;
-      padding: 10px 15px;
-      background: #ffffffb8;
-      color: var(--purple-deep);
-      box-shadow: 0 5px 20px #c9a5d51c;
-      cursor: pointer;
-      font-size: 0.88rem;
-    }
-
-    .eyebrow {
-      margin: 8px 0;
-      color: var(--pink-deep);
-      font-size: 0.85rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 8px 0;
-      font-size: clamp(2.2rem, 9vw, 4.5rem);
-      line-height: 1.15;
-      letter-spacing: -1px;
-      color: #e985b7;
-      text-shadow: 0 4px 0 #ffffffa8, 0 9px 28px #edafd1;
-    }
-
-    h1 span {
-      color: #a58be8;
-    }
-
-    .subtitle {
-      max-width: 470px;
-      margin: 16px auto 26px;
-      font-size: clamp(0.95rem, 3.5vw, 1.1rem);
-      line-height: 1.9;
-      color: #997b9a;
-    }
-
-    .scene {
-      position: relative;
-      display: grid;
-      place-items: center;
-      min-height: 300px;
-      margin: 0 auto 22px;
-      overflow: hidden;
-      border: 1px solid #ffffffc9;
-      border-radius: 30px;
-      background: linear-gradient(145deg, #fff9fdc9, #f1e9ffc9);
-      box-shadow: 0 20px 60px #bca0d52b;
-    }
-
-    .scene::before,
-    .scene::after {
-      position: absolute;
-      content: "✦";
-      color: #f3bfdf;
-      font-size: 25px;
-      animation: twinkle 2.5s ease-in-out infinite alternate;
-    }
-
-    .scene::before {
-      top: 25px;
-      left: 13%;
-    }
-
-    .scene::after {
-      right: 12%;
-      bottom: 28px;
-      color: #bba7f2;
-      animation-delay: 1s;
-    }
-
-    .gift-area {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 24px 12px;
-    }
-
-    .gift-btn {
-      position: relative;
-      display: grid;
-      place-items: center;
-      width: 180px;
-      height: 180px;
-      border: 0;
-      background: transparent;
-      cursor: pointer;
-      filter: drop-shadow(0 13px 12px #cb91bf3b);
-      animation: giftBounce 2.2s ease-in-out infinite;
-    }
-
-    .gift-btn:active {
-      transform: scale(0.96);
-    }
-
-    .gift-box {
-      position: absolute;
-      bottom: 14px;
-      width: 130px;
-      height: 94px;
-      border: 3px solid #fff9ff;
-      border-radius: 9px 9px 16px 16px;
-      background: linear-gradient(135deg, #ffb4d7, #f38dbd);
-    }
-
-    .gift-box::before {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 47px;
-      width: 27px;
-      content: "";
-      background: linear-gradient(90deg, #c6b2ff, #e4d7ff, #c6b2ff);
-    }
-
-    .gift-box::after {
-      position: absolute;
-      right: 0;
-      bottom: -12px;
-      left: 0;
-      height: 13px;
-      border-radius: 0 0 8px 8px;
-      content: "";
-      background: #e985b7;
-    }
-
-    .gift-lid {
-      position: absolute;
-      z-index: 2;
-      top: 32px;
-      left: 16px;
-      width: 148px;
-      height: 32px;
-      border: 3px solid #fff9ff;
-      border-radius: 8px;
-      background: linear-gradient(135deg, #ffcae4, #ff9fcb);
-      transform-origin: 15% 100%;
-      transition: transform 0.75s cubic-bezier(.2, .8, .2, 1);
-    }
-
-    .gift-lid::after {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 55px;
-      width: 27px;
-      content: "";
-      background: #c6b2ff;
-    }
-
-    .bow {
-      position: absolute;
-      top: -21px;
-      left: 52px;
-      width: 37px;
-      height: 25px;
-      border: 5px solid #b49aed;
-      border-radius: 80% 20% 70% 30%;
-      transform: rotate(15deg);
-    }
-
-    .bow::after {
-      position: absolute;
-      top: -4px;
-      left: 22px;
-      width: 34px;
-      height: 24px;
-      border: 5px solid #b49aed;
-      border-radius: 20% 80% 30% 70%;
-      content: "";
-      transform: rotate(40deg);
-    }
-
-    .gift-btn.opened {
-      animation: none;
-    }
-
-    .gift-btn.opened .gift-lid {
-      transform: translate(-22px, -65px) rotate(-30deg);
-    }
-
-    .gift-hint {
-      margin: 0;
-      font-size: 0.93rem;
-      color: #aa8aa9;
-      animation: twinkle 2s infinite alternate;
-    }
-
-    .gift-message {
-      position: absolute;
-      z-index: 3;
-      top: 20px;
-      left: 50%;
-      width: min(90%, 320px);
-      padding: 14px;
-      border: 1px solid #ffffffd9;
-      border-radius: 20px;
-      background: #fffaf5f2;
-      box-shadow: 0 10px 35px #dca8d84d;
-      opacity: 0;
-      pointer-events: none;
-      transform: translate(-50%, 25px) scale(.7);
-      transition: opacity .5s, transform .5s;
-    }
-
-    .gift-message.show {
-      opacity: 1;
-      transform: translate(-50%, 0) scale(1);
-    }
-
-    .gift-message strong {
-      display: block;
-      color: #e47daf;
-      font-size: 1.5rem;
-    }
-
-    .gift-message p {
-      margin: 5px 0;
-      line-height: 1.6;
-    }
-
-    .section {
-      margin-top: 25px;
-      padding: 25px 20px;
-      border: 1px solid #ffffffc9;
-      border-radius: 26px;
-      background: #ffffffa3;
-      box-shadow: 0 12px 40px #c5a2d51b;
-      backdrop-filter: blur(8px);
-    }
-
-    .section h2 {
-      margin: 0 0 15px;
-      color: #b18cdd;
-      font-size: 1.4rem;
-    }
-
-    .letter {
-      position: relative;
-      padding: 24px 19px;
-      border: 1px dashed #efb1d1;
-      border-radius: 15px;
-      background: linear-gradient(145deg, #fffafc, #fff1f8);
-      text-align: left;
-    }
-
-    .letter::before {
-      position: absolute;
-      top: -15px;
-      right: 15px;
-      content: "💌";
-      font-size: 32px;
-      transform: rotate(12deg);
-    }
-
-    .letter p {
-      margin: 0 0 13px;
-      line-height: 1.95;
-      font-size: 0.97rem;
-      white-space: pre-line;
-    }
-
-    .letter .signature {
-      margin: 20px 0 0;
-      text-align: right;
-      color: #d47cab;
-      font-weight: 700;
-    }
-
-    .cake-wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 16px 0 8px;
-    }
-
-    .cake {
-      position: relative;
-      width: 190px;
-      height: 160px;
-      margin: 12px 0 6px;
-    }
-
-    .cake-base {
-      position: absolute;
-      bottom: 13px;
-      left: 10px;
-      width: 170px;
-      height: 73px;
-      border: 3px solid #fff;
-      border-radius: 14px 14px 20px 20px;
-      background: linear-gradient(#ffcae2 0 27%, #f5a8ce 27% 100%);
-      box-shadow: 0 9px 0 #e48bb9;
-    }
-
-    .cake-base::before {
-      position: absolute;
-      top: -8px;
-      left: -3px;
-      width: 170px;
-      height: 20px;
-      border: 3px solid #fff;
-      border-radius: 50%;
-      content: "";
-      background: #fff0f8;
-    }
-
-    .cake-base::after {
-      position: absolute;
-      top: 17px;
-      left: 0;
-      width: 100%;
-      height: 8px;
-      content: "♡  ♡  ♡  ♡  ♡";
-      color: #fff7ff;
-      font-size: 13px;
-      text-align: center;
-      letter-spacing: 5px;
-    }
-
-    .cake-top {
-      position: absolute;
-      bottom: 83px;
-      left: 28px;
-      width: 134px;
-      height: 42px;
-      border: 3px solid #fff;
-      border-radius: 12px 12px 8px 8px;
-      background: linear-gradient(#e5d9ff 0 50%, #c9b3fa 50%);
-    }
-
-    .candle {
-      position: absolute;
-      z-index: 2;
-      bottom: 120px;
-      left: 91px;
-      width: 12px;
-      height: 33px;
-      border: 2px solid #fff;
-      border-radius: 5px;
-      background: repeating-linear-gradient(
-        -45deg, #fff, #fff 5px, #f5a0c9 5px, #f5a0c9 10px
-      );
-    }
-
-    .flame {
-      position: absolute;
-      bottom: 152px;
-      left: 91px;
-      width: 13px;
-      height: 20px;
-      border-radius: 50% 50% 50% 0;
-      background: radial-gradient(ellipse at 60% 65%, #fffbd3 0 15%, #ffcf72 38%, #ff9dbb 75%);
-      box-shadow: 0 0 12px #ffbd6b, 0 0 30px #ff9dcb;
-      transform: rotate(-45deg);
-      animation: flame 1s ease-in-out infinite alternate;
-      transform-origin: 50% 100%;
-    }
-
-    .cake-note {
-      margin: 0 0 16px;
-      color: #a18aac;
-      font-size: .9rem;
-    }
-
-    .btn {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      gap: 7px;
-      min-height: 46px;
-      padding: 12px 20px;
-      border: 0;
-      border-radius: 999px;
-      color: white;
-      background: linear-gradient(110deg, #f29bc5, #b49aed);
-      box-shadow: 0 8px 20px #d9a5d94d;
-      cursor: pointer;
-      transition: transform .2s, box-shadow .2s;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 11px 25px #d9a5d966;
-    }
-
-    .btn:active {
-      transform: scale(.97);
-    }
-
-    .btn-secondary {
-      color: #a17fca;
-      background: #f3eaff;
-      box-shadow: none;
-    }
-
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 17px;
-    }
-
-    .secret-box {
-      display: none;
-      margin-top: 18px;
-      padding: 20px 16px;
-      border: 1px dashed #d3b5f1;
-      border-radius: 18px;
-      background: #f9f3ff;
-      animation: appear .55s ease both;
-    }
-
-    .secret-box.show {
-      display: block;
-    }
-
-    .secret-box p {
-      margin: 7px 0;
-      line-height: 1.9;
-    }
-
-    .footer {
-      margin-top: 30px;
-      color: #b29ab7;
-      font-size: .83rem;
-      line-height: 1.8;
-    }
-
-    #particles {
-      position: fixed;
-      z-index: 0;
-      inset: 0;
-      overflow: hidden;
-      pointer-events: none;
-    }
-
-    .particle {
-      position: absolute;
-      bottom: -50px;
-      left: var(--x);
-      font-size: var(--size);
-      opacity: 0;
-      animation: floatUp var(--duration) linear forwards;
-      filter: drop-shadow(0 3px 5px #d9a5d944);
-      will-change: transform, opacity;
-    }
-
-    .burst {
-      position: fixed;
-      z-index: 20;
-      left: var(--x);
-      top: var(--y);
-      pointer-events: none;
-      font-size: 22px;
-      animation: burst 1.2s ease-out forwards;
-    }
-
-    .toast {
-      position: fixed;
-      z-index: 30;
-      right: 16px;
-      bottom: 18px;
-      left: 16px;
-      width: fit-content;
-      max-width: calc(100% - 32px);
-      margin: auto;
-      padding: 12px 18px;
-      border: 1px solid #fff;
-      border-radius: 999px;
-      background: #fffaf5f2;
-      color: #a27ca9;
-      box-shadow: 0 8px 30px #b69bcf30;
-      opacity: 0;
-      transform: translateY(15px);
-      transition: .3s;
-      pointer-events: none;
-    }
-
-    .toast.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @keyframes giftBounce {
-      0%, 100% { transform: translateY(0) rotate(0); }
-      50% { transform: translateY(-9px) rotate(1deg); }
-    }
-
-    @keyframes floatUp {
-      0% {
-        opacity: 0;
-        transform: translate3d(0, 0, 0) rotate(0);
-      }
-      10% { opacity: .85; }
-      85% { opacity: .75; }
-      100% {
-        opacity: 0;
-        transform: translate3d(var(--drift), -115vh, 0) rotate(360deg);
-      }
-    }
-
-    @keyframes twinkle {
-      from { opacity: .45; }
-      to { opacity: 1; }
-    }
-
-    @keyframes flame {
-      from { transform: rotate(-48deg) scale(.94); }
-      to { transform: rotate(-40deg) scale(1.08); }
-    }
-
-    @keyframes burst {
-      0% { opacity: 1; transform: translate(0, 0) scale(.6) rotate(0); }
-      100% {
-        opacity: 0;
-        transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(80deg);
-      }
-    }
-
-    @keyframes appear {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 480px) {
-      .page {
-        width: min(100% - 22px, 760px);
-        padding-top: 15px;
-      }
-
-      .scene {
-        min-height: 285px;
-        border-radius: 24px;
-      }
-
-      .section {
-        padding: 21px 15px;
-        border-radius: 22px;
-      }
-
-      .letter {
-        padding: 22px 15px;
-      }
-
-      .letter p {
-        font-size: .94rem;
-      }
-
-      .gift-message strong {
-        font-size: 1.3rem;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-      }
+        radial-gradient(ellipse at 8% 8%, #ffe0ef 0, transparent 36%),
+        radial-gradient(ellipse at 95% 18%, #e8ddff 0, transparent 38%),
+        linear-gradient(160deg, #fffaff, #fff0f7 52%, #f3efff);
+    }
+    button { font: inherit; -webkit-tap-highlight-color: transparent; }
+    button:focus-visible { outline: 3px solid #9b7bda; outline-offset: 4px; }
+    button:disabled { cursor: default; }
+    .sky { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+    .sparkle {
+      position: absolute; left: var(--x); top: var(--y); color: var(--c);
+      font-size: var(--s); opacity: .45; animation: twinkle var(--t) ease-in-out infinite alternate;
+    }
+    .wrap { position: relative; z-index: 1; width: min(100% - 24px, 720px); margin: auto; padding: 20px 0 42px; }
+    .top { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom: 18px; }
+    .tiny-label { font-size:.78rem; letter-spacing: 2px; color:#c77aaa; }
+    .music {
+      border:1px solid #fff; border-radius:999px; background:#ffffffb8;
+      color:var(--purple-deep); padding:10px 14px; box-shadow:0 5px 18px #caa5df26; cursor:pointer;
+    }
+    .hero { text-align:center; padding: 12px 4px 16px; }
+    .pill { display:inline-block; padding:7px 13px; border-radius:999px; background:#ffffffad; color:#b18ac8; font-size:.8rem; border:1px solid #fff; }
+    h1 { margin:13px 0 8px; color:var(--pink-deep); font-size:clamp(2rem, 8vw, 3.7rem); line-height:1.2; text-shadow:0 3px #fff, 0 8px 24px #eab5d4; }
+    h1 span { color:var(--purple-deep); }
+    .hero p { margin:0 auto; max-width:480px; line-height:1.85; color:#a082a5; }
+    .panel {
+      background:var(--glass); border:1px solid #fff; border-radius:28px;
+      box-shadow:0 16px 45px #b99ad42a; backdrop-filter:blur(10px);
+      padding:clamp(18px, 5vw, 30px); margin-top:18px;
+    }
+    .question-card { text-align:center; overflow:hidden; }
+    .mini-heart { font-size:2.2rem; display:inline-block; animation: heartbeat 1.25s ease-in-out infinite; }
+    h2 { font-size:clamp(1.35rem, 5vw, 1.9rem); margin:8px 0; color:#d779ad; }
+    .sub { margin:8px 0 20px; line-height:1.8; color:#a48aaa; }
+    .button-stage { min-height:190px; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:14px; position:relative; isolation:isolate; padding:8px 0; }
+    .choice {
+      border:0; border-radius:999px; cursor:pointer; position:relative; z-index:1;
+      display:flex; align-items:center; justify-content:center; gap:8px; text-align:center;
+      transition: width .55s cubic-bezier(.2,.8,.2,1), min-height .55s, font-size .4s, transform .3s, box-shadow .35s, background .3s;
+      font-weight:800; overflow-wrap:anywhere; touch-action:manipulation;
+    }
+    .yes {
+      width:var(--yes-width, 190px); min-height:var(--yes-height, 56px);
+      max-width:100%; padding:12px 20px; color:white;
+      background:linear-gradient(115deg,#f5a2ca,#c3a6f6);
+      box-shadow:0 8px 24px #db91c34d, inset 0 1px 0 #ffffff80;
+      font-size:var(--yes-font, 1.08rem);
+      animation: softPulse 2.4s ease-in-out infinite;
+    }
+    .yes:hover { box-shadow:0 12px 30px #db91c36b; }
+    .yes:active { transform:scale(.97); }
+    .think {
+      min-width:160px; min-height:48px; padding:11px 20px; color:#987abd;
+      border:1px solid #e8d8f6; background:linear-gradient(135deg,#fff,#f1e8ff);
+      box-shadow:0 5px 14px #c2a5df21; font-size:1rem;
+    }
+    .think:hover { transform:translateY(-2px) rotate(-1deg); }
+    .hint { min-height:28px; margin:14px 0 0; color:#c17cab; font-size:.9rem; line-height:1.7; }
+    .result { display:none; margin-top:20px; padding:20px 15px; border-radius:22px; background:linear-gradient(135deg,#fff2f9,#f4edff); border:1px dashed #e4b9dc; animation: pop .6s ease both; }
+    .result.show { display:block; }
+    .result h3 { margin:0 0 8px; font-size:1.45rem; color:#d56fa6; }
+    .result p { margin:7px 0; line-height:1.9; }
+    .big-heart { font-size:3rem; display:inline-block; animation: heartbeat .9s infinite; }
+    .gift-row { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:14px; }
+    .gift {
+      min-width:94px; padding:13px 12px; border:1px solid #fff; border-radius:18px;
+      background:linear-gradient(145deg,#fff7fc,#f0e8ff); box-shadow:0 7px 18px #c9a6dc2b;
+      cursor:pointer; color:#a17fbe; transition:transform .25s, box-shadow .25s;
+    }
+    .gift:hover { transform:translateY(-4px) rotate(-2deg); box-shadow:0 12px 22px #c9a6dc45; }
+    .gift span { display:block; font-size:2rem; margin-bottom:4px; }
+    .gift-note { display:none; margin:15px 0 0; padding:14px; border-radius:16px; background:#ffffffc9; line-height:1.8; }
+    .gift-note.show { display:block; animation:pop .4s ease both; }
+    .letter { text-align:left; line-height:1.95; white-space:pre-line; }
+    .letter strong { color:#d779ad; }
+    .section-title { text-align:center; color:#a587d2; font-size:1.25rem; margin:0 0 14px; }
+    .cake-area { text-align:center; }
+    .cake { position:relative; width:190px; height:160px; margin:18px auto 10px; }
+    .cake-base { position:absolute; bottom:14px; left:10px; width:170px; height:75px; border:3px solid #fff; border-radius:14px 14px 20px 20px; background:linear-gradient(#ffd9eb 0 27%,#f2a2ca 27%); box-shadow:0 8px 0 #df8db9; }
+    .cake-base:before { content:""; position:absolute; top:-8px; left:-3px; width:170px; height:20px; border:3px solid #fff; border-radius:50%; background:#fff4fa; }
+    .cake-base:after { content:"♡  ♡  ♡  ♡"; position:absolute; top:20px; left:0; width:100%; color:white; text-align:center; letter-spacing:5px; font-size:13px; }
+    .cake-top { position:absolute; bottom:85px; left:28px; width:134px; height:40px; border:3px solid white; border-radius:12px 12px 8px 8px; background:linear-gradient(#e9deff 0 50%,#c7b2f5 50%); }
+    .candle { position:absolute; z-index:2; bottom:122px; left:91px; width:12px; height:31px; border:2px solid white; border-radius:5px; background:repeating-linear-gradient(-45deg,#fff,#fff 5px,#f4a0ca 5px,#f4a0ca 10px); }
+    .flame { position:absolute; bottom:152px; left:91px; width:14px; height:21px; border-radius:50% 50% 50% 0; background:radial-gradient(ellipse at 60% 65%,#fffbd3 0 15%,#ffcf72 38%,#ff9dbb 75%); box-shadow:0 0 13px #ffbd6b,0 0 28px #ff9dcb; transform:rotate(-45deg); transform-origin:50% 100%; animation:flame 1s ease-in-out infinite alternate; }
+    .action { border:0; border-radius:999px; padding:12px 19px; color:white; background:linear-gradient(110deg,#f19ac4,#b49aed); box-shadow:0 7px 18px #d9a5d94a; cursor:pointer; min-height:45px; transition:transform .2s; }
+    .action:active { transform:scale(.97); }
+    .action.secondary { color:#9c7bc2; background:#f2eaff; box-shadow:none; }
+    .footer { text-align:center; padding:26px 8px 0; color:#b69ab9; font-size:.82rem; line-height:1.9; }
+    .particle { position:fixed; z-index:10; left:var(--x); top:var(--y); pointer-events:none; font-size:var(--s); animation:float var(--d) ease-out forwards; }
+    .toast { position:fixed; z-index:20; bottom:18px; left:50%; transform:translate(-50%,20px); opacity:0; pointer-events:none; max-width:calc(100% - 28px); padding:12px 18px; border-radius:999px; background:#fffaf5f2; border:1px solid white; box-shadow:0 8px 25px #b69bcf30; color:#9b77a5; text-align:center; transition:.3s; }
+    .toast.show { opacity:1; transform:translate(-50%,0); }
+    @keyframes twinkle { from{opacity:.2;transform:scale(.8) rotate(-10deg)} to{opacity:.9;transform:scale(1.2) rotate(15deg)} }
+    @keyframes heartbeat { 0%,100%{transform:scale(1)} 15%{transform:scale(1.15)} 30%{transform:scale(1)} 45%{transform:scale(1.1)} }
+    @keyframes softPulse { 0%,100%{filter:saturate(1)} 50%{filter:saturate(1.15)} }
+    @keyframes flame { from{transform:rotate(-48deg) scale(.94)} to{transform:rotate(-40deg) scale(1.08)} }
+    @keyframes pop { from{opacity:0;transform:translateY(10px) scale(.96)} to{opacity:1;transform:translateY(0) scale(1)} }
+    @keyframes float { 0%{opacity:0;transform:translate(0,0) scale(.6) rotate(0)} 12%{opacity:1} 100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(1.35) rotate(35deg)} }
+    @media(max-width:420px) {
+      .wrap { width:calc(100% - 18px); padding-top:12px; }
+      .top { align-items:flex-start; }
+      .panel { border-radius:23px; padding:18px 14px; }
+      .button-stage { min-height:205px; }
+      .gift { min-width:85px; }
+    }
+    @media(prefers-reduced-motion:reduce) {
+      *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important; }
+      .choice { transition:none; }
     }
   </style>
 </head>
-
 <body>
-  <div id="particles" aria-hidden="true"></div>
+  <div class="sky" id="sky" aria-hidden="true"></div>
 
-  <main class="page">
-    <div class="topbar">
-      <button
-        class="music-btn"
-        id="musicBtn"
-        type="button"
-        aria-pressed="false"
-        aria-label="เปิดหรือปิดเพลงพื้นหลัง"
-      >🎵 เปิดเพลง</button>
+  <main class="wrap">
+    <div class="top">
+      <span class="tiny-label">A LITTLE LOVE NOTE ♡</span>
+      <button class="music" id="musicBtn" type="button">🎵 เปิดเพลง</button>
     </div>
 
-    <header>
-      <p class="eyebrow">a little surprise for you ♡</p>
-      <h1>Happy <span>Birthday!</span></h1>
-      <p class="subtitle">
-        วันนี้เป็นวันพิเศษของคนพิเศษ ✨<br>
-        มีของขวัญชิ้นเล็ก ๆ ที่ตั้งใจทำมาให้ด้วยนะ
-      </p>
+    <header class="hero">
+      <span class="pill">🌷 made with love & a little magic</span>
+      <h1>น้ารักหนู<span>มั้ยยย</span> 💗</h1>
+      <p>มีคำถามสำคัญอยากถามหน่อยนะ<br>ตอบจากหัวใจได้เลยน้าาา (แต่อย่าคิดนานสิ 🤭)</p>
     </header>
 
-    <section class="scene" aria-label="กล่องของขวัญวันเกิด">
-      <div class="gift-area">
-        <button
-          class="gift-btn"
-          id="giftBtn"
-          type="button"
-          aria-label="เปิดกล่องของขวัญ"
-          aria-expanded="false"
-        >
-          <span class="gift-lid"><span class="bow"></span></span>
-          <span class="gift-box"></span>
-        </button>
-        <p class="gift-hint" id="giftHint">แตะกล่องของขวัญเพื่อเปิด ♡</p>
-      </div>
+    <section class="panel question-card" aria-labelledby="questionTitle">
+      <span class="mini-heart" aria-hidden="true">💗</span>
+      <h2 id="questionTitle">น้ารักหนูมั้ย? 🥺</h2>
+      <p class="sub">เลือกคำตอบข้างล่างได้เลยยย ♡</p>
 
-      <div class="gift-message" id="giftMessage" aria-live="polite">
-        <strong>Surprise! 🎉</strong>
-        <p>ขอให้วันนี้เต็มไปด้วยรอยยิ้ม<br>และเรื่องราวดี ๆ นะคนเก่ง ♡</p>
+      <div class="button-stage" id="buttonStage">
+        <button class="choice yes" id="yesBtn" type="button">รักสิ 💖</button>
+        <button class="choice think" id="thinkBtn" type="button">คิดก่อน 🤔</button>
+      </div>
+      <p class="hint" id="hint" aria-live="polite">คำตอบอยู่ตรงนี้น้าา ✨</p>
+
+      <div class="result" id="result" aria-live="polite">
+        <span class="big-heart">💞</span>
+        <h3 id="resultTitle">เย้!!! รู้อยู่แล้ววว</h3>
+        <p id="resultText">หนูจับได้แล้วนะว่ารักหนูแค่ไหน อิอิ 💗</p>
+        <button class="action secondary" id="againBtn" type="button">เล่นอีกครั้ง ↻</button>
       </div>
     </section>
 
-    <section class="section" id="letterSection">
-      <h2>💌 จดหมายถึงคนพิเศษ</h2>
+    <section class="panel">
+      <h2 class="section-title">🎁 เลือกกล่องของขวัญลับ</h2>
+      <p class="sub" style="text-align:center;margin-bottom:8px">เลือกได้ทีละกล่อง แต่ละกล่องมีข้อความไม่เหมือนกันนะ</p>
+      <div class="gift-row">
+        <button class="gift" data-gift="0" type="button"><span>🎀</span>กล่องที่ 1</button>
+        <button class="gift" data-gift="1" type="button"><span>💝</span>กล่องที่ 2</button>
+        <button class="gift" data-gift="2" type="button"><span>🧸</span>กล่องที่ 3</button>
+      </div>
+      <div class="gift-note" id="giftNote" aria-live="polite"></div>
+    </section>
+
+    <section class="panel">
+      <h2 class="section-title">💌 จดหมายถึงน้า</h2>
       <div class="letter">
-        <p>ถึง <strong>คนพิเศษของเรา</strong> ♡</p>
-        <p>สุขสันต์วันเกิดนะ! 🎂
-
-ขอให้ปีนี้เป็นปีที่ใจดีกับน้ามาก ๆ
-ขอให้ทุกวันที่ตื่นขึ้นมา มีเรื่องเล็ก ๆ
-ที่ทำให้น้ายิ้มได้เสมอ
-
-ขอให้ความฝันที่น้าตั้งใจไว้
-ค่อย ๆ กลายเป็นความจริงทีละอย่าง
-เหนื่อยเมื่อไหร่ก็อย่าลืมพัก
-และอย่าลืมว่าน้าเก่งกว่าที่ตัวเองคิดนะ
-
-ขอให้ได้พบเจอผู้คนที่อ่อนโยน
-มีความสุขกับสิ่งที่รัก
-และเป็นตัวเองในแบบที่ชอบได้เต็มที่เลย ♡</p>
-        <p class="signature">ด้วยความรักและความปรารถนาดี ✿</p>
+        ถึง <strong>คนน้าเน็กคนเก่ง ♡</strong><br><br>
+        ขอเเสดงความยินดีด้วยยยย! น้าคือผู้โชคดีได้รับรางวัลน้าดีเด่น!!🌷<br><br>
+        ขอให้น้าเป็นคนที่มีความสุขที่สุดเล้ยยย<br>
+        <strong>ส่งกอดนุ่ม ๆ ให้หนึ่งที 🤗💗</strong>
       </div>
     </section>
 
-    <section class="section">
-      <h2>🎂 Make a wish!</h2>
-      <div class="cake-wrap">
-        <div class="cake" role="img" aria-label="เค้กวันเกิดสีชมพูม่วงพร้อมเทียนเรืองแสง">
-          <div class="cake-base"></div>
-          <div class="cake-top"></div>
-          <div class="candle"></div>
-          <div class="flame" id="flame"></div>
-        </div>
-
-        <p class="cake-note" id="cakeNote">
-          อธิษฐานขอพรในใจ แล้วเป่าเทียนกันนะ ✨
-        </p>
-
-        <button class="btn" id="blowBtn" type="button">
-          🌬️ เป่าเทียนวันเกิด
-        </button>
+    <section class="panel cake-area">
+      <h2 class="section-title">🎂 อธิษฐานวันเกิดกัน</h2>
+      <div class="cake" role="img" aria-label="เค้กวันเกิดสีชมพูม่วงพร้อมเทียน">
+        <div class="cake-base"></div><div class="cake-top"></div>
+        <div class="candle"></div><div class="flame" id="flame"></div>
       </div>
+      <p class="sub" id="cakeText">หลับตา ขอพรในใจ แล้วกดเป่าเทียนนะ ✨</p>
+      <button class="action" id="blowBtn" type="button">🌬️ เป่าเทียน!</button>
     </section>
 
-    <section class="section">
-      <h2>🎀 ยังมีอะไรอีกนะ...</h2>
-      <p style="line-height:1.9; margin:0">
-        มีบางอย่างที่ซ่อนอยู่ตรงนี้<br>
-        ลองกดปุ่มข้างล่างดูสิ ♡
-      </p>
-
-      <div class="button-row">
-        <button class="btn" id="secretBtn" type="button" aria-expanded="false">
-          ✨ เปิดเซอร์ไพรส์ลับ
-        </button>
-        <button class="btn btn-secondary" id="heartBtn" type="button">
-          💗 ส่งหัวใจให้หน่อย
-        </button>
-      </div>
-
-      <div class="secret-box" id="secretBox" aria-live="polite">
-        <div style="font-size:2rem">🌷💗🌙</div>
-        <p><strong>ข้อความลับสำหรับน้า</strong></p>
-        <p>
-          ไม่ว่าเส้นทางข้างหน้าจะเป็นแบบไหน<br>
-          ขอให้น้ามีความกล้าที่จะฝัน<br>
-          มีคนคอยรับฟังในวันที่เหนื่อย<br>
-          และมีความสุขกับชีวิตในแบบของตัวเองนะ
-        </p>
-        <p>โลกใบนี้โชคดีมากเลยที่มีน้าอยู่ ♡</p>
-        <p>— จากคนที่ตั้งใจทำเว็บนี้ให้น้า ✿</p>
-      </div>
+    <section class="panel" style="text-align:center">
+      <h2 class="section-title">🌙 เซอร์ไพรส์เล็ก ๆ</h2>
+      <p class="sub">ถ้าอยากเติมหัวใจให้เต็มหน้าจอ กดปุ่มนี้เลย!</p>
+      <button class="action" id="heartBtn" type="button">💗 โปรยหัวใจ!</button>
     </section>
 
     <footer class="footer">
-      Made with ♡, a little magic & lots of love<br>
-      ขอให้ทุกวันของน้าเต็มไปด้วยความสุขนะ 🌸
+      Made with ♡, pastel dreams & lots of love<br>
+      ขอให้วันนี้ใจดีกับน้ามาก ๆ นะคะ 🌸
     </footer>
   </main>
 
@@ -761,249 +215,198 @@
   <script>
     (() => {
       "use strict";
-
-      const $ = (id) => document.getElementById(id);
-
-      const particles = $("particles");
-      const giftBtn = $("giftBtn");
-      const giftMessage = $("giftMessage");
-      const giftHint = $("giftHint");
-      const musicBtn = $("musicBtn");
-      const flame = $("flame");
-      const cakeNote = $("cakeNote");
-      const blowBtn = $("blowBtn");
-      const secretBtn = $("secretBtn");
-      const secretBox = $("secretBox");
-      const heartBtn = $("heartBtn");
-      const toast = $("toast");
-
-      let giftOpened = false;
-      let candleBlown = false;
-      let secretOpened = false;
-      let audioContext = null;
-      let musicTimer = null;
-      let noteIndex = 0;
-      let musicOn = false;
-      let toastTimer = null;
-
-      // เมโลดีสั้น ๆ ที่สร้างจาก Web Audio API
-      // ไม่ต้องใช้ไฟล์ MP3 หรือโหลดเพลงจากภายนอก
-      const melody = [
-        523.25, 659.25, 783.99, 659.25,
-        587.33, 698.46, 880.00, 698.46,
-        523.25, 659.25, 783.99, 1046.50,
-        880.00, 783.99, 659.25, 587.33
-      ];
+      const $ = id => document.getElementById(id);
+      const yesBtn = $("yesBtn"), thinkBtn = $("thinkBtn");
+      const hint = $("hint"), result = $("result");
+      const resultTitle = $("resultTitle"), resultText = $("resultText");
+      const stage = $("buttonStage"), toast = $("toast");
+      let thinkCount = 0, chosen = false, candleOut = false;
+      let audioContext = null, musicTimer = null, musicOn = false, noteIndex = 0, toastTimer;
+      const notes = [523.25,659.25,783.99,659.25,587.33,698.46,880,698.46,523.25,659.25,783.99,1046.5,880,783.99,659.25,587.33];
 
       function showToast(message) {
         toast.textContent = message;
         toast.classList.add("show");
         clearTimeout(toastTimer);
-        toastTimer = setTimeout(() => {
-          toast.classList.remove("show");
-        }, 2400);
+        toastTimer = setTimeout(() => toast.classList.remove("show"), 2300);
       }
 
-      function makeSound(frequency, duration = 0.22, volume = 0.055) {
-        if (!audioContext || audioContext.state !== "running") return;
-
-        try {
-          const oscillator = audioContext.createOscillator();
-          const gain = audioContext.createGain();
-
-          oscillator.type = "sine";
-          oscillator.frequency.value = frequency;
-          gain.gain.setValueAtTime(volume, audioContext.currentTime);
-          gain.gain.exponentialRampToValueAtTime(
-            0.001,
-            audioContext.currentTime + duration
-          );
-
-          oscillator.connect(gain);
-          gain.connect(audioContext.destination);
-
-          oscillator.start();
-          oscillator.stop(audioContext.currentTime + duration);
-        } catch (error) {
-          console.warn("เล่นเสียงไม่ได้:", error);
+      function confetti(x, y, amount = 24) {
+        const symbols = ["💗","♡","✨","🌸","💜","⭐","💕"];
+        for (let i=0; i<amount; i++) {
+          const el = document.createElement("span");
+          el.className = "particle";
+          el.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+          el.style.setProperty("--x", (x + (Math.random()*24-12)) + "px");
+          el.style.setProperty("--y", (y + (Math.random()*24-12)) + "px");
+          el.style.setProperty("--dx", (Math.random()*280-140) + "px");
+          el.style.setProperty("--dy", (Math.random()*-240-30) + "px");
+          el.style.setProperty("--s", (14+Math.random()*15) + "px");
+          el.style.setProperty("--d", (0.8+Math.random()*1.1) + "s");
+          document.body.appendChild(el);
+          el.addEventListener("animationend", () => el.remove(), {once:true});
         }
       }
 
-      function startMusic() {
-        if (musicOn) return;
+      function confettiFrom(el, amount) {
+        const r = el.getBoundingClientRect();
+        confetti(r.left+r.width/2, r.top+r.height/2, amount);
+      }
 
-        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      function setGrowth() {
+        const width = Math.min(100, 190 + thinkCount*34);
+        const height = 56 + thinkCount*8;
+        const font = 1.08 + thinkCount*.12;
+        yesBtn.style.setProperty("--yes-width", width + (width === 100 ? "vw" : "px"));
+        yesBtn.style.setProperty("--yes-height", height + "px");
+        yesBtn.style.setProperty("--yes-font", font + "rem");
+        yesBtn.style.zIndex = String(2 + thinkCount);
+      }
 
-        if (!AudioCtx) {
-          showToast("เบราว์เซอร์นี้ไม่รองรับเสียงเพลง 🎵");
+      thinkBtn.addEventListener("click", () => {
+        if (chosen) return;
+        thinkCount = Math.min(thinkCount + 1, 6);
+        setGrowth();
+        const messages = [
+          "หื้มมม ต้องคิดด้วยเหรออ 🤨💗",
+          "ปุ่มรักสิใหญ่ขึ้นแล้วนะะ 🤭",
+          "ยังจะคิดอีกเหรอออ 🥹💕",
+          "ปุ่มรักสิแทบจะบังหนูแล้วน้าา!",
+          "โอกาสสุดท้ายแล้วนะะะ 😳",
+          "โอเค๊ ปุ่มรักสิใหญ่เต็มที่แล้ว! 💖"
+        ];
+        hint.textContent = messages[thinkCount-1];
+        confettiFrom(thinkBtn, 7);
+        if (thinkCount >= 6) {
+          yesBtn.style.width = "100%";
+          yesBtn.style.minHeight = "112px";
+          yesBtn.style.fontSize = "1.8rem";
+          yesBtn.textContent = "รักสิ รักสิ รักสิ 💖💖";
+          hint.textContent = "ปุ่มใหญ่ขนาดนี้แล้ว... กดได้หรือยังน้าา 🤣";
+        }
+      });
+
+      yesBtn.addEventListener("click", () => {
+        if (chosen) return;
+        chosen = true;
+        result.classList.add("show");
+        resultTitle.textContent = thinkCount >= 3 ? "ในที่สุดก็กดแล้ววว! 😭💗" : "เย้!!! รู้อยู่แล้ววว 💞";
+        resultText.textContent = "คำตอบที่ถูกใจที่สุดเลยยย ขอส่งหัวใจให้เป็นล้านดวง 💗";
+        hint.textContent = "ตอบถูกใจคนทำเว็บที่สุดแล้วว ♡";
+        thinkBtn.disabled = true;
+        yesBtn.disabled = true;
+        confettiFrom(stage, 42);
+        result.scrollIntoView({behavior:"smooth", block:"nearest"});
+        showToast("รับความรักไปเต็ม ๆ เลย 💕");
+      });
+
+      $("againBtn").addEventListener("click", () => {
+        thinkCount = 0; chosen = false;
+        yesBtn.disabled = false; thinkBtn.disabled = false;
+        yesBtn.textContent = "รักสิ 💖";
+        yesBtn.style.width = ""; yesBtn.style.minHeight = ""; yesBtn.style.fontSize = "";
+        yesBtn.style.removeProperty("--yes-width");
+        yesBtn.style.removeProperty("--yes-height");
+        yesBtn.style.removeProperty("--yes-font");
+        yesBtn.style.zIndex = "";
+        result.classList.remove("show");
+        hint.textContent = "คำตอบอยู่ตรงนี้น้าา ✨";
+        setGrowth();
+      });
+
+      const giftMessages = [
+        "🎀 ของขวัญชิ้นนี้คือคำอวยพร ขอให้ทุกวันของน้ามีเรื่องน่ารักให้ยิ้มได้!",
+        "💝 ของขวัญชิ้นนี้คือกำลังใจ ขอให้น้ากล้าฝันและค่อย ๆ ไปถึงเป้าหมายของตัวเองนะ",
+        "🧸 ของขวัญชิ้นนี้คือกอดอุ่น ๆ ขอให้น้าได้พักใจในวันที่เหนื่อย และเจอคนที่ใจดีกับน้าเสมอ"
+      ];
+      document.querySelectorAll("[data-gift]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const index = Number(btn.dataset.gift);
+          const note = $("giftNote");
+          note.textContent = giftMessages[index];
+          note.classList.remove("show");
+          void note.offsetWidth;
+          note.classList.add("show");
+          confettiFrom(btn, 18);
+        });
+      });
+
+      $("blowBtn").addEventListener("click", () => {
+        candleOut = !candleOut;
+        $("flame").style.display = candleOut ? "none" : "block";
+        $("blowBtn").textContent = candleOut ? "🕯️ จุดเทียนอีกครั้ง" : "🌬️ เป่าเทียน!";
+        $("cakeText").textContent = candleOut
+          ? "เย้! ขอให้พรที่น้าขอไว้ค่อย ๆ เป็นจริงนะ 💗"
+          : "เทียนกลับมาสว่างแล้ว ขอพรได้อีกครั้งนะ ✨";
+        confettiFrom($("blowBtn"), 18);
+      });
+
+      $("heartBtn").addEventListener("click", () => {
+        const amount = 34;
+        for (let i=0; i<amount; i++) {
+          const x = Math.random()*window.innerWidth;
+          const y = window.innerHeight*(.35+Math.random()*.55);
+          confetti(x, y, 1);
+        }
+        showToast("หัวใจลอยไปหาน้าแล้ววว 💗");
+      });
+
+      // ดนตรีทำนองสั้น ๆ สร้างในเบราว์เซอร์ ไม่ต้องใช้ไฟล์เสียงภายนอก
+      function playNote(freq) {
+        if (!audioContext || audioContext.state !== "running") return;
+        const osc = audioContext.createOscillator();
+        const gain = audioContext.createGain();
+        osc.type = "sine";
+        osc.frequency.value = freq;
+        gain.gain.setValueAtTime(.0001, audioContext.currentTime);
+        gain.gain.exponentialRampToValueAtTime(.035, audioContext.currentTime+.03);
+        gain.gain.exponentialRampToValueAtTime(.0001, audioContext.currentTime+.3);
+        osc.connect(gain); gain.connect(audioContext.destination);
+        osc.start(); osc.stop(audioContext.currentTime+.31);
+      }
+      $("musicBtn").addEventListener("click", async () => {
+        if (musicOn) {
+          musicOn = false; clearInterval(musicTimer); musicTimer = null;
+          $("musicBtn").textContent = "🎵 เปิดเพลง";
           return;
         }
-
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) { showToast("เบราว์เซอร์นี้ไม่รองรับเสียงเพลง"); return; }
         try {
           if (!audioContext) audioContext = new AudioCtx();
-
-          audioContext.resume().then(() => {
-            if (musicOn) return;
-
-            musicOn = true;
-            musicBtn.textContent = "🔇 ปิดเพลง";
-            musicBtn.setAttribute("aria-pressed", "true");
-
-            const playNote = () => {
-              if (!musicOn) return;
-              makeSound(melody[noteIndex], 0.32, 0.035);
-              noteIndex = (noteIndex + 1) % melody.length;
-            };
-
-            playNote();
-            musicTimer = setInterval(playNote, 380);
-          }).catch(() => {
-            showToast("ลองแตะเปิดเพลงอีกครั้งนะ 🎵");
-          });
-        } catch (error) {
-          showToast("ไม่สามารถเปิดเพลงได้ในขณะนี้");
-        }
-      }
-
-      function stopMusic() {
-        musicOn = false;
-        clearInterval(musicTimer);
-        musicTimer = null;
-        musicBtn.textContent = "🎵 เปิดเพลง";
-        musicBtn.setAttribute("aria-pressed", "false");
-      }
-
-      musicBtn.addEventListener("click", () => {
-        if (musicOn) {
-          stopMusic();
-        } else {
-          startMusic();
-        }
+          await audioContext.resume();
+          musicOn = true;
+          $("musicBtn").textContent = "🔇 ปิดเพลง";
+          const tick = () => { if (musicOn) { playNote(notes[noteIndex]); noteIndex=(noteIndex+1)%notes.length; } };
+          tick(); musicTimer=setInterval(tick,380);
+        } catch { showToast("ลองแตะเปิดเพลงอีกครั้งนะ 🎵"); }
       });
-
-      const symbols = ["♡", "♥", "✦", "✨", "🌸", "🌷", "💗", "⭐"];
-
-      function spawnParticle() {
-        if (document.hidden || particles.childElementCount > 32) return;
-
-        const item = document.createElement("span");
-        item.className = "particle";
-        item.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-
-        item.style.setProperty("--x", Math.random() * 100 + "%");
-        item.style.setProperty("--size", (12 + Math.random() * 17) + "px");
-        item.style.setProperty("--duration", (7 + Math.random() * 7) + "s");
-        item.style.setProperty("--drift", (Math.random() * 130 - 65) + "px");
-
-        particles.appendChild(item);
-        item.addEventListener("animationend", () => item.remove(), { once: true });
-      }
-
-      // ป้องกันเอฟเฟกต์สะสมจนทำให้มือถือทำงานหนัก
-      const particleTimer = setInterval(spawnParticle, 550);
-
-      function burstAt(x, y, amount = 22) {
-        const icons = ["💗", "♡", "✨", "🌸", "⭐", "💜"];
-
-        for (let i = 0; i < amount; i++) {
-          const item = document.createElement("span");
-          item.className = "burst";
-          item.textContent = icons[Math.floor(Math.random() * icons.length)];
-          item.style.setProperty("--x", x + "px");
-          item.style.setProperty("--y", y + "px");
-          item.style.setProperty("--dx", (Math.random() * 280 - 140) + "px");
-          item.style.setProperty("--dy", (Math.random() * 250 - 170) + "px");
-
-          document.body.appendChild(item);
-          item.addEventListener("animationend", () => item.remove(), { once: true });
-        }
-      }
-
-      function burstFrom(element, amount) {
-        const rect = element.getBoundingClientRect();
-        burstAt(rect.left + rect.width / 2, rect.top + rect.height / 2, amount);
-      }
-
-      giftBtn.addEventListener("click", () => {
-        if (giftOpened) {
-          burstFrom(giftBtn, 8);
-          showToast("ของขวัญชิ้นนี้มีไว้ให้น้าคนเดียวนะ ♡");
-          return;
-        }
-
-        giftOpened = true;
-        giftBtn.classList.add("opened");
-        giftBtn.setAttribute("aria-expanded", "true");
-        giftMessage.classList.add("show");
-        giftHint.textContent = "เย้! เปิดของขวัญสำเร็จแล้ว ♡";
-
-        burstFrom(giftBtn, 30);
-        makeSound(783.99, 0.2);
-        setTimeout(() => makeSound(1046.5, 0.35), 140);
-      });
-
-      blowBtn.addEventListener("click", () => {
-        if (candleBlown) {
-          flame.style.display = "block";
-          flame.style.animation = "";
-          candleBlown = false;
-          blowBtn.textContent = "🌬️ เป่าเทียนวันเกิด";
-          cakeNote.textContent = "จุดเทียนใหม่แล้ว ขอพรได้อีกครั้งนะ ✨";
-          showToast("เทียนกลับมาสว่างแล้ว 🕯️");
-          makeSound(659.25, 0.2);
-          return;
-        }
-
-        candleBlown = true;
-        flame.style.display = "none";
-        blowBtn.textContent = "🕯️ จุดเทียนอีกครั้ง";
-        cakeNote.textContent = "พรที่ขอไว้ ขอให้ค่อย ๆ เป็นจริงนะ ♡";
-
-        burstFrom($("flame"), 14);
-        makeSound(392, 0.28, 0.025);
-        showToast("สุขสันต์วันเกิด ขอให้พรเป็นจริงนะ! 🎂");
-      });
-
-      secretBtn.addEventListener("click", () => {
-        secretOpened = !secretOpened;
-        secretBox.classList.toggle("show", secretOpened);
-        secretBtn.setAttribute("aria-expanded", String(secretOpened));
-        secretBtn.textContent = secretOpened
-          ? "💗 ซ่อนเซอร์ไพรส์"
-          : "✨ เปิดเซอร์ไพรส์ลับ";
-
-        if (secretOpened) {
-          burstFrom(secretBtn, 25);
-          showToast("ค้นพบข้อความลับแล้ว! 🌷");
-          if (navigator.vibrate) navigator.vibrate(35);
-        }
-      });
-
-      heartBtn.addEventListener("click", () => {
-        burstFrom(heartBtn, 30);
-        makeSound(659.25, 0.2);
-        showToast("ส่งหัวใจให้เต็มหน้าจอเลย 💗");
-      });
-
-      // เคารพการตั้งค่าลดการเคลื่อนไหวของอุปกรณ์
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        clearInterval(particleTimer);
-      }
-
-      // หยุดสร้างโน้ตเมื่อหน้าเว็บไม่อยู่ด้านหน้า
       document.addEventListener("visibilitychange", () => {
         if (document.hidden && musicOn) {
-          stopMusic();
+          musicOn=false; clearInterval(musicTimer); musicTimer=null;
+          $("musicBtn").textContent="🎵 เปิดเพลง";
         }
+      });
+      window.addEventListener("pagehide", () => {
+        clearInterval(musicTimer);
+        if (audioContext && audioContext.state!=="closed") audioContext.close().catch(()=>{});
       });
 
-      // ลดโอกาสเกิดเสียงค้างเมื่อปิดหน้าเว็บ
-      window.addEventListener("pagehide", () => {
-        stopMusic();
-        if (audioContext && audioContext.state !== "closed") {
-          audioContext.close().catch(() => {});
-        }
-      });
+      // ดาวเล็ก ๆ บนพื้นหลัง
+      const sky = $("sky");
+      const starSymbols = ["✦","✧","⋆","♡","·"];
+      const colors = ["#f0a6ce","#b7a0ed","#e4a8d0","#c5b5fa"];
+      for (let i=0; i<32; i++) {
+        const star = document.createElement("span");
+        star.className = "sparkle";
+        star.textContent = starSymbols[Math.floor(Math.random()*starSymbols.length)];
+        star.style.setProperty("--x", Math.random()*100+"%");
+        star.style.setProperty("--y", Math.random()*100+"%");
+        star.style.setProperty("--s", (10+Math.random()*17)+"px");
+        star.style.setProperty("--t", (1.5+Math.random()*3)+"s");
+        star.style.setProperty("--c", colors[Math.floor(Math.random()*colors.length)]);
+        sky.appendChild(star);
+      }
     })();
   </script>
 </body>
